@@ -216,11 +216,12 @@ h1, h2, h3, h4 {
     left: 0;
     right: 0;
     height: var(--nav-height);
-    background: rgba(254, 249, 244, 0.9);
+    background: rgba(254, 249, 244, 0.95);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 3px solid var(--lavender);
     z-index: 1000;
+    overflow: visible;
 }
 
 .nav__inner {
@@ -1361,28 +1362,40 @@ h1, h2, h3, h4 {
     }
 
     .nav__links {
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
         right: 0;
-        width: 280px;
-        height: 100vh;
+        width: 100%;
         background: var(--color-bg);
         flex-direction: column;
-        padding: 6rem 2rem 2rem;
-        gap: 0.5rem;
-        transform: translateX(100%);
-        transition: transform var(--transition);
-        border-left: 3px solid var(--lavender);
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 0.3rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+        border-bottom: 3px solid var(--lavender);
         z-index: 1000;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     .nav__links.open {
-        transform: translateX(0);
+        max-height: 400px;
+        opacity: 1;
+        padding: 1rem 1.5rem 1.5rem;
+    }
+
+    .nav__links:not(.open) {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: none;
     }
 
     .nav__links a {
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
+        text-align: center;
     }
 
     .gallery-card,
