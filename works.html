@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works — Hailie Adkins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Josefin+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="nav" id="main-nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hailie Adkins</a>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="artist-statement.html">Artist Statement</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="page-header section--pink">
+            <div class="container">
+                <h1>Works</h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+
+                <div class="works-tabs">
+                    <button class="works-tab active" data-tab="photography">Photography</button>
+                    <button class="works-tab" data-tab="film">Film</button>
+                </div>
+
+                <!-- Photography -->
+                <div class="works-panel active" id="panel-photography">
+                    <div class="gallery-grid">
+
+                        <div class="gallery-card" data-gallery-id="kwc-narrative" data-images="images/photography/kwc_narrative/Gullett photo essay 10-01.jpg,images/photography/kwc_narrative/Gullett photo essay 10-02.jpg,images/photography/kwc_narrative/Gullett photo essay 10-03.jpg,images/photography/kwc_narrative/Gullett photo essay 10-04.jpg,images/photography/kwc_narrative/Gullett photo essay 10-05.jpg,images/photography/kwc_narrative/Gullett photo essay 10-06.jpg,images/photography/kwc_narrative/Gullett photo essay 10-07.jpg,images/photography/kwc_narrative/Gullett photo essay 10-08.jpg,images/photography/kwc_narrative/Gullett photo essay 10-09.jpg,images/photography/kwc_narrative/Gullett photo essay 10-10.jpg">
+                            <div class="gallery-card__image">
+                                <img src="images/photography/kwc_narrative/Gullett photo essay 10-01.jpg" alt="King's Way Church Narrative">
+                            </div>
+                            <div class="gallery-card__info">
+                                <h3>King's Way Church Narrative</h3>
+                                <p>ART 325 — Narrative photography. All photography and editing by Hailie.</p>
+                            </div>
+                        </div>
+
+                        <div class="gallery-card" data-gallery-id="little-shop" data-images="images/photography/little_shop/contact sheet 7 narrative 325-1.jpg,images/photography/little_shop/contact sheet 7 narrative 325-2.jpg,images/photography/little_shop/contact sheet 7 narrative 325-3.jpg,images/photography/little_shop/contact sheet 7 narrative 325-4.jpg,images/photography/little_shop/contact sheet 7 narrative 325-5.jpg,images/photography/little_shop/contact sheet 7 narrative 325-6.jpg,images/photography/little_shop/contact sheet 7 narrative 325-7.jpg">
+                            <div class="gallery-card__image">
+                                <img src="images/photography/little_shop/contact sheet 7 narrative 325-1.jpg" alt="Little Shop of Horrors Narrative">
+                            </div>
+                            <div class="gallery-card__info">
+                                <h3>Little Shop of Horrors Narrative</h3>
+                                <p>ART 325 — Open photography assignment, narrative. All work by Hailie.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="gallery-viewer" id="gallery-viewer">
+                        <button class="gallery-viewer__close" aria-label="Close gallery">&times;</button>
+                        <h3 class="gallery-viewer__title"></h3>
+                        <div class="gallery-viewer__images"></div>
+                    </div>
+                </div>
+
+                <!-- Film -->
+                <div class="works-panel" id="panel-film">
+                    <div class="film-grid">
+
+                        <div class="film-card" data-project-id="alchemy" data-video="images/film/videos/alchemy-theatre.mp4">
+                            <div class="film-card__thumbnail">
+                                <img src="images/film/thumbnails/image.jpg" alt="The Arts at Alchemy Theatre">
+                                <div class="film-card__play">&#9654;</div>
+                            </div>
+                            <div class="film-card__info">
+                                <h3>The Arts at Alchemy Theatre</h3>
+                                <span class="film-card__year">Spring 2025 — ART 327</span>
+                                <p>Documentary on Executive Director at Alchemy Theatre, Nora Ankrom.</p>
+                                <span class="film-card__role">Directed, produced, edited, wrote, shot, interviewed — with another classmate</span>
+                            </div>
+                        </div>
+
+                        <div class="film-card" data-project-id="dinner-date" data-video="images/film/videos/dinner-date.mp4">
+                            <div class="film-card__thumbnail">
+                                <img src="images/film/thumbnails/image2.jpg" alt="The Dinner Date">
+                                <div class="film-card__play">&#9654;</div>
+                            </div>
+                            <div class="film-card__info">
+                                <h3>The Dinner Date</h3>
+                                <span class="film-card__year">Fall 2025 — ART 219</span>
+                                <p>Narrative video. All roles by Hailie aside from acting.</p>
+                                <span class="film-card__role">Director, Writer, Editor, Cinematographer</span>
+                            </div>
+                        </div>
+
+                        <div class="film-card" data-project-id="christmas-cookies" data-video="images/film/videos/christmas-cookies.mp4">
+                            <div class="film-card__thumbnail">
+                                <img src="images/film/thumbnails/image3.jpg" alt="Christmas Cookies">
+                                <div class="film-card__play">&#9654;</div>
+                            </div>
+                            <div class="film-card__info">
+                                <h3>Christmas Cookies</h3>
+                                <span class="film-card__year">Fall 2025 — ART 219</span>
+                                <p>Stop motion assignment. All roles by Hailie aside from acting.</p>
+                                <span class="film-card__role">Director, Animator, Editor</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="film-viewer" id="film-viewer">
+                        <button class="film-viewer__close" aria-label="Close project">&times;</button>
+                        <h3 class="film-viewer__title"></h3>
+                        <p class="film-viewer__description"></p>
+                        <div class="film-viewer__embed"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox for viewing images up close -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" aria-label="Close">&times;</button>
+        <button class="lightbox__nav lightbox__prev" aria-label="Previous">&#8249;</button>
+        <button class="lightbox__nav lightbox__next" aria-label="Next">&#8250;</button>
+        <img class="lightbox__img" src="" alt="Full size view">
+    </div>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <p>&copy; 2026 Hailie Adkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/florals.js"></script>
+</body>
+</html>

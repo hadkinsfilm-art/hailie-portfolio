@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Hailie Adkins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Josefin+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="nav" id="main-nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hailie Adkins</a>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="works.html">Works</a></li>
+                <li><a href="artist-statement.html">Artist Statement</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="page-header section--butter">
+            <div class="container">
+                <h1>Contact</h1>
+            </div>
+        </section>
+
+        <section class="section section--sky">
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Interested in collaborating, booking for weddings and events, or just want to say hello? Reach out using the details below.</p>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <strong>Email</strong>
+                                <a href="mailto:hadkinsfilm@gmail.com">hadkinsfilm@gmail.com</a>
+                            </div>
+                            <div class="contact-detail">
+                                <strong>Instagram</strong>
+                                <a href="https://instagram.com/hadkinsfilm" target="_blank" rel="noopener">@hadkinsfilm</a>
+                            </div>
+                            <div class="contact-detail">
+                                <strong>Location</strong>
+                                <span>Ashland, Kentucky</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form"
+                          action="https://docs.google.com/forms/d/e/1FAIpQLSeRc1t3wn0P84mQkkHtr6bB_QVex908BZFYk8207K9xwh3K_g/formResponse"
+                          method="POST" target="hidden-form-iframe">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="entry.1246634760" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="entry.1243855798" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="entry.348221351">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="entry.1154540764" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Send Message</button>
+                        <div class="form-success" id="form-success">Message sent! We'll get back to you soon.</div>
+                    </form>
+                    <iframe name="hidden-form-iframe" id="hidden-form-iframe" style="display:none;"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <p>&copy; 2026 Hailie Adkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/florals.js"></script>
+    <script>
+    (function() {
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('form-success');
+        if (!form) return;
+
+        form.addEventListener('submit', function() {
+            setTimeout(function() {
+                form.reset();
+                successMsg.classList.add('visible');
+                setTimeout(function() {
+                    successMsg.classList.remove('visible');
+                }, 5000);
+            }, 500);
+        });
+    })();
+    </script>
+</body>
+</html>
