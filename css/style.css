@@ -54,6 +54,22 @@ body {
     background-color: var(--color-bg);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    animation: pageLoad 0.5s ease;
+}
+
+@keyframes pageLoad {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+::selection {
+    background: var(--pink-light);
+    color: var(--color-text);
+}
+
+::-moz-selection {
+    background: var(--pink-light);
+    color: var(--color-text);
 }
 
 img {
@@ -65,6 +81,56 @@ a {
     color: var(--color-text);
     text-decoration: none;
     transition: color var(--transition);
+}
+
+:focus-visible {
+    outline: 3px solid var(--pink);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--pink);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition);
+    box-shadow: 0 4px 15px rgba(249, 139, 169, 0.35);
+    z-index: 999;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-top:hover {
+    background: #e87a98;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(249, 139, 169, 0.5);
 }
 
 h1, h2, h3, h4 {
@@ -446,6 +512,71 @@ h1, h2, h3, h4 {
     box-shadow: 8px 8px 0 var(--pink);
 }
 
+.home-reel {
+    width: 100%;
+    border-radius: var(--radius) var(--radius) 0 0;
+    border: 4px solid var(--butter);
+    border-bottom: none;
+    box-shadow: 8px 8px 0 var(--pink);
+    display: block;
+}
+
+.reel-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: var(--color-surface);
+    border: 4px solid var(--butter);
+    border-top: 2px solid var(--butter-light);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: 8px 8px 0 var(--pink);
+}
+
+.reel-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    transition: background var(--transition), color var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reel-btn:hover {
+    background: var(--pink-light);
+    color: var(--pink);
+}
+
+.reel-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.reel-btn--mute .reel-icon--muted {
+    color: var(--pink);
+}
+
+.reel-progress-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.reel-progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--pink);
+    border-radius: 3px;
+    transition: width 0.15s linear;
+}
+
 /* ============================================
    PAGE HEADER
    ============================================ */
@@ -536,6 +667,12 @@ h1, h2, h3, h4 {
     padding: 2rem 2.5rem;
     border-radius: var(--radius);
     border: 2px solid var(--color-border);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.resume-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
 }
 
 .resume-section:nth-child(1) { border-color: var(--sky); }
@@ -629,6 +766,12 @@ h1, h2, h3, h4 {
     letter-spacing: 0.02em;
     border-radius: var(--radius-pill);
     color: var(--color-text);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 .skill-tag:nth-child(5n+1) { background: var(--sky-light); border: 2px solid var(--sky); }
@@ -1148,6 +1291,17 @@ h1, h2, h3, h4 {
     font-size: 0.95rem;
 }
 
+.contact-detail a {
+    color: var(--color-text);
+    border-bottom: 1px dashed transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.contact-detail a:hover {
+    color: var(--pink);
+    border-bottom-color: var(--pink);
+}
+
 .contact-form {
     background: var(--color-surface);
     padding: 2.5rem;
@@ -1312,9 +1466,27 @@ h1, h2, h3, h4 {
    FOOTER
    ============================================ */
 .footer {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
     background: var(--lavender-light);
     border-top: 4px dashed var(--lavender);
+}
+
+.footer__social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.footer__social a {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.footer__social a:hover {
+    color: var(--pink);
 }
 
 .footer__inner {

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hailie Adkins — Portfolio</title>
+    <meta name="description" content="Hailie Adkins — filmmaker and photographer based in Ashland, KY. Documentary, narrative, and photography portfolio.">
+    <meta property="og:title" content="Hailie Adkins — Portfolio">
+    <meta property="og:description" content="Filmmaker and photographer based in Ashland, KY. View my documentary, narrative, and photography work.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Josefin+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -40,7 +44,7 @@
             </div>
         </section>
 
-        <section class="section section--pink home-intro">
+        <section class="section section--pink home-intro fade-in">
             <div class="container">
                 <div class="home-intro__grid">
                     <div class="home-intro__text">
@@ -48,21 +52,94 @@
                         <p>Drawn to documentary filmmaking for its emotional depth and ability to connect audiences through real human experiences. From narrative photography to short films, each project tells a story worth sharing.</p>
                         <a href="bio.html" class="link-arrow">Learn more about me &rarr;</a>
                     </div>
-                    <div class="home-intro__image">
-                        <img src="images/featured.png" alt="Little Shop of Horrors — Hailie Adkins" class="home-featured-img">
+                    <div class="home-intro__video">
+                        <video id="home-reel" src="images/website_reel.mov" autoplay muted loop playsinline class="home-reel"></video>
+                        <div class="reel-controls">
+                            <button class="reel-btn" id="reel-playpause" aria-label="Play/Pause">
+                                <svg class="reel-icon reel-icon--pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+                                <svg class="reel-icon reel-icon--play" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="6,4 20,12 6,20"/></svg>
+                            </button>
+                            <div class="reel-progress-wrap" id="reel-progress-wrap">
+                                <div class="reel-progress-bar" id="reel-progress-bar"></div>
+                            </div>
+                            <button class="reel-btn reel-btn--mute" id="reel-mute" aria-label="Mute/Unmute">
+                                <svg class="reel-icon reel-icon--muted" viewBox="0 0 24 24" fill="currentColor"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                                <svg class="reel-icon reel-icon--unmuted" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 010 7.07" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <button class="scroll-top" id="scroll-top" aria-label="Back to top">&uarr;</button>
+
     <footer class="footer">
         <div class="footer__inner">
+            <div class="footer__social">
+                <a href="mailto:hadkinsfilm@gmail.com">hadkinsfilm@gmail.com</a>
+                <a href="https://instagram.com/hadkinsfilm" target="_blank" rel="noopener">@hadkinsfilm</a>
+            </div>
             <p>&copy; 2026 Hailie Adkins. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script src="js/florals.js"></script>
+    <script>
+    (function() {
+        var reel = document.getElementById('home-reel');
+        if (!reel) return;
+
+        var playBtn = document.getElementById('reel-playpause');
+        var muteBtn = document.getElementById('reel-mute');
+        var progressWrap = document.getElementById('reel-progress-wrap');
+        var progressBar = document.getElementById('reel-progress-bar');
+        var iconPause = playBtn.querySelector('.reel-icon--pause');
+        var iconPlay = playBtn.querySelector('.reel-icon--play');
+        var iconMuted = muteBtn.querySelector('.reel-icon--muted');
+        var iconUnmuted = muteBtn.querySelector('.reel-icon--unmuted');
+
+        function updatePlayIcons() {
+            var paused = reel.paused;
+            iconPause.style.display = paused ? 'none' : 'block';
+            iconPlay.style.display = paused ? 'block' : 'none';
+        }
+
+        function updateMuteIcons() {
+            iconMuted.style.display = reel.muted ? 'block' : 'none';
+            iconUnmuted.style.display = reel.muted ? 'none' : 'block';
+        }
+
+        playBtn.addEventListener('click', function() {
+            if (reel.paused) { reel.play(); } else { reel.pause(); }
+            updatePlayIcons();
+        });
+
+        muteBtn.addEventListener('click', function() {
+            reel.muted = !reel.muted;
+            updateMuteIcons();
+        });
+
+        reel.addEventListener('timeupdate', function() {
+            if (reel.duration) {
+                progressBar.style.width = (reel.currentTime / reel.duration * 100) + '%';
+            }
+        });
+
+        progressWrap.addEventListener('click', function(e) {
+            var rect = progressWrap.getBoundingClientRect();
+            var pct = (e.clientX - rect.left) / rect.width;
+            reel.currentTime = pct * reel.duration;
+        });
+
+        reel.addEventListener('play', updatePlayIcons);
+        reel.addEventListener('pause', updatePlayIcons);
+
+        updatePlayIcons();
+        updateMuteIcons();
+    })();
+    </script>
 </body>
 </html>

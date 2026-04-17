@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initGalleryViewer();
     initFilmViewer();
     initLightbox();
+    initScrollTop();
+    initFadeIn();
 });
 
 /* ── Mobile Nav Toggle ── */
@@ -22,6 +24,13 @@ function initNavToggle() {
             toggle.classList.remove("open");
             links.classList.remove("open");
         });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!links.contains(e.target) && !toggle.contains(e.target)) {
+            toggle.classList.remove("open");
+            links.classList.remove("open");
+        }
     });
 }
 
@@ -235,4 +244,42 @@ function initLightbox() {
         const idx = allThumbs.indexOf(clickedImg);
         open(srcs, idx);
     });
+}
+
+/* ── Scroll-to-Top Button ── */
+function initScrollTop() {
+    const btn = document.getElementById("scroll-top");
+    if (!btn) return;
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            btn.classList.add("visible");
+        } else {
+            btn.classList.remove("visible");
+        }
+    });
+
+    btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
+
+/* ── Fade-In on Scroll ── */
+function initFadeIn() {
+    const elements = document.querySelectorAll(".fade-in");
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
 }
